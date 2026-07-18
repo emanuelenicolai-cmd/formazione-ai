@@ -64,7 +64,14 @@
         }
       })
       .catch(function () {
-        msg.textContent = 'Si è verificato un problema con l\'invio. Riprova tra qualche minuto o scrivici direttamente.';
+        var subject = encodeURIComponent('Aggiornamenti corso PMI Compliance AI Act');
+        var body = encodeURIComponent(
+          'Nome: ' + nome + '\nAzienda: ' + (azienda || '-') +
+          '\n\nHo letto l\'informativa privacy e acconsento al trattamento dei miei dati per ricevere aggiornamenti sul corso.'
+        );
+        msg.innerHTML = 'Si è verificato un problema con l\'invio automatico. ' +
+          'Puoi <a href="mailto:' + box + '@' + host + '?subject=' + subject + '&body=' + body +
+          '">scriverci direttamente via email</a>: rispondiamo entro un giorno lavorativo.';
         msg.className = 'err';
       })
       .finally(function () {
